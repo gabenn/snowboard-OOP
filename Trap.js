@@ -3,71 +3,71 @@ class Trap {
         this.moveLength = 3;
         this.intervalTime = 15;
         this.jumpQuantity = 3;
-        this.createTrap = (x, y) => {
-            const treeTrap = document.createElement('div');
-            treeTrap.className = "traps deadTrees";
-            treeTrap.style.left = `${x}px`;
-            treeTrap.style.top = `${y}px`;
-            traps.push(treeTrap);
-            return document.body.appendChild(treeTrap);
-        }
-        this.moveRight = () => {
-            intervalRight =
-                setInterval(function () {
-                    traps.forEach(trap => {
-                        trap.style.top = `${trap.offsetTop - treeTrap.moveLength}px`;
-                        trap.style.left = `${trap.offsetLeft - treeTrap.moveLength}px`;
-                        collision();
-                    });
-                }, treeTrap.intervalTime);
-        }
-        this.moveLeft = () => {
-            intervalLeft =
-                setInterval(function () {
-                    traps.forEach(trap => {
-                        trap.style.top = `${trap.offsetTop -treeTrap.moveLength}px`;
-                        trap.style.left = `${trap.offsetLeft + treeTrap.moveLength}px`;
-                    });
+    }
+    createTrap = (x, y) => {
+        const treeTrap = document.createElement('div');
+        treeTrap.className = "traps deadTrees";
+        treeTrap.style.left = `${x}px`;
+        treeTrap.style.top = `${y}px`;
+        traps.push(treeTrap);
+        return document.body.appendChild(treeTrap);
+    }
+    moveRight = () => {
+        intervalRight =
+            setInterval(function () {
+                traps.forEach(trap => {
+                    trap.style.top = `${trap.offsetTop - treeTrap.moveLength}px`;
+                    trap.style.left = `${trap.offsetLeft - treeTrap.moveLength}px`;
                     collision();
-                }, treeTrap.intervalTime);
-        }
-        this.moveDown = () => {
-            intervalDown =
-                setInterval(function () {
-                    traps.forEach(trap => {
+                });
+            }, treeTrap.intervalTime);
+    }
+    moveLeft = () => {
+        intervalLeft =
+            setInterval(function () {
+                traps.forEach(trap => {
+                    trap.style.top = `${trap.offsetTop -treeTrap.moveLength}px`;
+                    trap.style.left = `${trap.offsetLeft + treeTrap.moveLength}px`;
+                });
+                collision();
+            }, treeTrap.intervalTime);
+    }
+    moveDown = () => {
+        intervalDown =
+            setInterval(function () {
+                traps.forEach(trap => {
+                    trap.style.top = `${trap.offsetTop-treeTrap.moveLength}px`;
+                });
+                collision();
+            }, treeTrap.intervalTime)
+    }
+    moveUp = () => {
+        intervalUp =
+            setInterval(function () {
+                traps.forEach(trap => {
+                    trap.style.top = `${trap.offsetTop+treeTrap.moveLength}px`;
+                });
+                collision();
+            }, treeTrap.intervalTime)
+    }
+    jump = () => {
+        if (treeTrap.jumpQuantity > 0) {
+            treeTrap.jumpQuantity -= 1;
+            for (let i = 0; i < 50; i++) {
+                traps.forEach(trap => {
+                    setTimeout(() => {
                         trap.style.top = `${trap.offsetTop-treeTrap.moveLength}px`;
-                    });
-                    collision();
-                }, treeTrap.intervalTime)
-        }
-        this.moveUp = () => {
-            intervalUp =
-                setInterval(function () {
-                    traps.forEach(trap => {
-                        trap.style.top = `${trap.offsetTop+treeTrap.moveLength}px`;
-                    });
-                    collision();
-                }, treeTrap.intervalTime)
-        }
-        this.jump = () => {
-            if (treeTrap.jumpQuantity > 0) {
-                treeTrap.jumpQuantity -= 1;
-                for (let i = 0; i < 50; i++) {
-                    traps.forEach(trap => {
-                        setTimeout(() => {
-                            trap.style.top = `${trap.offsetTop-treeTrap.moveLength}px`;
-                        }, treeTrap.intervalTime)
-                    });
-                }
+                    }, treeTrap.intervalTime)
+                });
             }
-            treeTrap.moveDown();
         }
-        this.clearIntervals = () => {
-            clearInterval(intervalDown);
-            clearInterval(intervalRight);
-            clearInterval(intervalLeft);
-            clearInterval(intervalUp);
-        }
+        treeTrap.moveDown();
+    }
+    clearIntervals = () => {
+        clearInterval(intervalDown);
+        clearInterval(intervalRight);
+        clearInterval(intervalLeft);
+        clearInterval(intervalUp);
     }
 }
 let intervalRight, intervalDown, intervalLeft, intervalUp;
