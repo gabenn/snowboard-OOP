@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snowboard OOP</title>
+    <link href="style.css" rel="stylesheet">
+    <link id="favIcon" rel="icon" href="assets/playerRight.png">
+    <script src="Game.js" defer></script>
+    <script src="Trap.js" defer></script>
+    <script src="Point.js" defer></script>
+    <script src="Modal.js" defer></script>
+    <script src="Main.js" defer></script>
+</head>
+<body>
+    
+    <div id="gameBackground"></div>
+    <div id="textContainer">
+        <h1>SNOWBOARD GAME</h1>
+        <p class="howToPlay"><strong>Use ⇦ a, ⇨ d, and ⇩ s to move.</strong> </p>
+        <p class="howToPlay"><strong>Use shift to make a short jump. You can use it 3 times.</strong></p>
+        <p id="scoreBox"></p>
+    </div>
+    <div id="playerCharacter"></div>
+    <div class="modalBox">
+        <h2 class="modalHeader">SNOWBOARD GAME</h2>
+        <div class="modalScore">
+            <h4 class="modalText">Highscore:</label>
+                <input type="text" class="modalInputText" id="modalHighScore" placeholder="0" disabled>
+                <h4 class="modalText">Score:</h4>
+                <input type="text" class="modalInputText" id="modalScore" placeholder="0" disabled>
+        </div>
+        <input type="button" class="modalPlay" value="" onclick="location.reload()">
+        <div class="modalFooter">
+            <span><a class="githubIcon" href="https://github.com/gabenn" target="_blank"></a></span>
+        </div>
+    </div>
+</body>
+</html>
